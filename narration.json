@@ -6,8 +6,8 @@
   "engine": "kokoro",
   "voice": "am_michael",
   "lang": "en-us",
-  "speed": 1.0,
-  "pad": 0.6,
+  "speed": 0.85,
+  "pad": 0.55,
   "minSeconds": 2.0,
   "scenes": [
     {
