@@ -126,9 +126,22 @@ export const Film: React.FC = () => {
             </AbsoluteFill>
           );
         }
-        // A flash hides its swap under the blow-out, so the OUTGOING shot must stay
-        // on top until the white peaks; every other join puts the incoming on top.
-        const z = joinCfg.kind === 'flash' ? (role === 'out' ? 2 : 1) : role === 'out' ? 1 : 2;
+        // A flash hides its swap under the blow-out: the OUTGOING shot stays on top
+        // until the white peaks, then the incoming takes over while the white is
+        // still burning off. Swapping at the peak is what makes it one flash instead
+        // of white → old shot → snap to new shot.
+        const z =
+          joinCfg.kind === 'flash'
+            ? p < 0.5
+              ? role === 'out'
+                ? 2
+                : 1
+              : role === 'out'
+                ? 1
+                : 2
+            : role === 'out'
+              ? 1
+              : 2;
         return (
           <JoinLayer key={`${s.id}-${role}`} join={joinCfg} role={role} p={p} z={z}>
             {body}
