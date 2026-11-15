@@ -123,17 +123,14 @@ export const JoinLayer: React.FC<{
 
 /** The white blow-out drawn over a flash join. */
 export const FlashOverlay: React.FC<{p: number}> = ({p}) => {
-  const up = interpolate(p, [0, 0.5], [0, 1], {
-    extrapolateLeft: 'clamp',
-    extrapolateRight: 'clamp',
-    easing: Easing.in(Easing.quad),
-  });
-  const down = interpolate(p, [0.5, 1], [1, 0], {
-    extrapolateLeft: 'clamp',
-    extrapolateRight: 'clamp',
-    easing: Easing.out(Easing.quad),
-  });
-  const opacity = p < 0.5 ? up : down;
+  // Ramp in, HOLD full white for ~4 frames, ramp out. A flash that only touches
+  // full white for a single frame reads as a grey wash, not a blow-out.
+  const opacity = interpolate(
+    p,
+    [0, 0.38, 0.62, 1],
+    [0, 1, 1, 0],
+    {extrapolateLeft: 'clamp', extrapolateRight: 'clamp', easing: Easing.inOut(Easing.quad)},
+  );
   return (
     <AbsoluteFill
       style={{
