@@ -51,6 +51,10 @@ for sc in NARR["scenes"]:
     seconds = max(measured, min_s)
     dur = int(round((seconds + pad) * fps))
 
+    words = len([w for w in sc["text"].replace(",", "").replace(".", "").split() if w])
+    wpm = words / measured * 60
+    if wpm > 200:
+        raise SystemExit(f"{sc['id']}: {wpm:.0f} wpm is too fast — lower speed in narration.json")
     scenes.append(
         {
             "id": sc["id"],
@@ -58,11 +62,12 @@ for sc in NARR["scenes"]:
             "start": cursor,
             "dur": dur,
             "seconds": round(seconds, 3),
+            "wpm": round(wpm),
             "joinOut": sc["joinOut"],
         }
     )
     cursor += dur
-    print(f"{sc['id']:>14}  {measured:5.2f}s raw  {seconds:5.2f}s used  {dur:4d}f  start {cursor}")
+    print(f"{sc['id']:>14}  {wpm:4.0f}wpm  {measured:5.2f}s raw  {seconds:5.2f}s used  {dur:4d}f  start {cursor}")
 
 manifest = {
     "fps": fps,
