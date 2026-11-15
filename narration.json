@@ -1,0 +1,144 @@
+{
+  "fps": 30,
+  "width": 1080,
+  "height": 1920,
+  "title": "What Happens To A Pill After You Swallow It",
+  "engine": "kokoro",
+  "voice": "am_michael",
+  "lang": "en-us",
+  "speed": 1.0,
+  "pad": 0.6,
+  "minSeconds": 2.0,
+  "scenes": [
+    {
+      "id": "01-hook",
+      "text": "You swallow a pill, then you forget it.",
+      "joinOut": {
+        "kind": "push",
+        "anchor": {
+          "x": 540,
+          "y": 880,
+          "r": 115
+        }
+      }
+    },
+    {
+      "id": "02-mouth",
+      "text": "Saliva softens the shell on the way down.",
+      "joinOut": {
+        "kind": "portal",
+        "anchor": {
+          "x": 540,
+          "y": 980,
+          "r": 150
+        }
+      }
+    },
+    {
+      "id": "03-throat",
+      "text": "Your throat squeezes it down in a wave.",
+      "joinOut": {
+        "kind": "push",
+        "anchor": {
+          "x": 540,
+          "y": 900,
+          "r": 140
+        }
+      }
+    },
+    {
+      "id": "04-oesophagus",
+      "text": "Muscle keeps pushing, even upside down.",
+      "joinOut": {
+        "kind": "portal",
+        "anchor": {
+          "x": 540,
+          "y": 900,
+          "r": 150
+        }
+      }
+    },
+    {
+      "id": "05-stomach",
+      "text": "In your stomach, acid eats the coating away.",
+      "joinOut": {
+        "kind": "push",
+        "anchor": {
+          "x": 540,
+          "y": 960,
+          "r": 170
+        }
+      }
+    },
+    {
+      "id": "06-dissolve",
+      "text": "The shell thins, then gives up entirely.",
+      "joinOut": {
+        "kind": "push",
+        "anchor": {
+          "x": 540,
+          "y": 960,
+          "r": 170
+        }
+      }
+    },
+    {
+      "id": "07-split",
+      "text": "It splits, and the medicine spills into the acid.",
+      "joinOut": {
+        "kind": "portal",
+        "anchor": {
+          "x": 540,
+          "y": 940,
+          "r": 130
+        }
+      }
+    },
+    {
+      "id": "08-gutwall",
+      "text": "The drug crosses your gut wall into your blood.",
+      "joinOut": {
+        "kind": "portal",
+        "anchor": {
+          "x": 540,
+          "y": 940,
+          "r": 120
+        }
+      }
+    },
+    {
+      "id": "09-blood",
+      "text": "Blood carries it to every part of you.",
+      "joinOut": {
+        "kind": "squeeze",
+        "dir": 1
+      }
+    },
+    {
+      "id": "10-liver",
+      "text": "But your liver grabs a big share first.",
+      "joinOut": {
+        "kind": "flash"
+      }
+    },
+    {
+      "id": "11-share",
+      "text": "So less than you swallowed reaches the rest of you.",
+      "joinOut": {
+        "kind": "push",
+        "anchor": {
+          "x": 540,
+          "y": 960,
+          "r": 140
+        }
+      }
+    },
+    {
+      "id": "12-answer",
+      "text": "That is why the dose is never the dose.",
+      "joinOut": {
+        "kind": "push"
+      }
+    }
+  ]
+}
